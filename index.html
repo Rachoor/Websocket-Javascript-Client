@@ -1,0 +1,23 @@
+ <script src="lib/websocket.js"></script>
+ <script src="lib/event.js"></script>
+ <script src="lib/abstract_connection.js"></script>
+ <script src="lib/http_connection.js"></script>
+ <script src="lib/websocket_connection.js"></script>
+ <script src="lib/channel.js"></script>
+
+
+ <script>
+ 	var task = {
+	  name: 'Start taking advantage of WebSockets',
+	  completed: true
+	}
+
+	var dispatcher = new WebSocketRails('localhost:3000/websocket');
+
+	dispatcher.trigger('new_message',{user_name: 'test', msg_body: 'test'});
+
+	dispatcher.bind('new_message', function(message) {
+		console.log("New Message");
+		console.log(message);
+	});
+ </script>
